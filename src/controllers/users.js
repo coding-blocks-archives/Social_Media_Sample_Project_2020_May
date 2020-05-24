@@ -10,6 +10,8 @@ async function createAnonUser() {
 }
 
 async function getUserById(id) {
+  if (isNaN(id)) throw new Error('user id should be integer')
+  
   return await Users.findOne({ where: { id } })
 }
 
