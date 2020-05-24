@@ -6,7 +6,7 @@
   "scripts": {
     "start": "node src/server.js",
     "test": "mocha test/setup.js test/**/*.test.js",
-    "cover": "nyc --reporter=html npm run test"
+    "cover": "nyc --reporter=lcov npm run test"
   },
   "author": "",
   "license": "ISC",
