@@ -1,5 +1,5 @@
 // setup testing environment before requiring anything
-// process.env.NODE_ENV = 'testing'
+process.env.NODE_ENV = "testing";
 
 const { db } = require("../src/db/models");
 const chai = require("chai");
