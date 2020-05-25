@@ -1,69 +1,59 @@
-const Sequelize = require('sequelize')
+const Sequelize = require("sequelize");
 
-let db
-if (process.env.NODE_ENV == 'testing') {
-  db = new Sequelize({
-    dialect: 'sqlite',
-    storage: ':memory:',
-  })
-} else {
-  db = new Sequelize({
-    dialect: 'mysql',
-    database: 'cbsocialmediadb',
-    username: 'cbsocialuser',
-    password: 'cbsocialpass',
-  })
-}
+let db = new Sequelize({
+  dialect: "sqlite",
+  storage: __dirname + "/socialmedia.db",
+});
 
 const COL_ID_DEF = {
   type: Sequelize.DataTypes.INTEGER,
   autoIncrement: true,
   primaryKey: true,
-}
+};
 const COL_USERNAME_DEF = {
   type: Sequelize.DataTypes.STRING(30),
   unique: true,
   allowNull: false,
-}
+};
 const COL_TITLE_DEF = {
   type: Sequelize.DataTypes.STRING(140),
   allowNull: false,
-}
+};
 
-const Users = db.define('user', {
+const Users = db.define("user", {
   id: COL_ID_DEF,
   username: COL_USERNAME_DEF,
-})
+});
 
-const Posts = db.define('post', {
+const Posts = db.define("post", {
   id: COL_ID_DEF,
   title: COL_TITLE_DEF,
   body: {
     type: Sequelize.DataTypes.TEXT,
     allowNull: false,
   },
-})
+});
 
-const Comments = db.define('comment', {
+const Comments = db.define("comment", {
   id: COL_ID_DEF,
   title: COL_TITLE_DEF,
   body: {
-    type: Sequelize.DataTypes.TEXT('tiny'),
+    type: Sequelize.DataTypes.TEXT("tiny"),
   },
-})
+});
 
-Users.hasMany(Posts)
-Posts.belongsTo(Users)
+Users.hasMany(Posts);
+Posts.belongsTo(Users);
 
-Users.hasMany(Comments)
-Comments.belongsTo(Users)
+Users.hasMany(Comments);
+Comments.belongsTo(Users);
 
-Posts.hasMany(Comments)
-Comments.belongsTo(Posts)
+Posts.hasMany(Comments);
+Comments.belongsTo(Posts);
 
 module.exports = {
   db,
   Users,
   Posts,
   Comments,
-}
+};
