@@ -1,19 +1,20 @@
 const Sequelize = require('sequelize')
 
+
 let db
-if (process.env.NODE_ENV == 'testing') {
+
+if (process.env.NODE_ENV == "testing") {
     db = new Sequelize({
-        dialect: 'sqlite',
-        storage: ':memory:',
+        dialect: "sqlite",
+        storage: __dirname + "/test.db"
     })
 } else {
     db = new Sequelize({
-        dialect: 'mysql',
-        database: 'cbsocialmediadb',
-        username: 'cbsocialuser',
-        password: 'cbsocialpass',
+        dialect: "sqlite",
+        storage: __dirname + "/media.db"
     })
 }
+
 
 const COL_ID_DEF = {
     type: Sequelize.DataTypes.INTEGER,
