@@ -1,13 +1,13 @@
-const { Posts, Users } = require('../db/models')
+const { Posts, Users, Comments } = require('../db/models')
 
 async function createNewPost(userId, title, body) {
-  const post = await Posts.create({
-    title,
-    body,
-    userId,
-  })
+    const post = await Posts.create({
+        title,
+        body,
+        userId,
+    })
 
-  return post
+    return post
 }
 
 /**
@@ -15,20 +15,20 @@ async function createNewPost(userId, title, body) {
  * showAllPosts({title: ''})
  */
 async function findAllPosts(query) {
-  let where = {}
-  if (query.userId) { where.userId = query.userId }
-  
-  const posts = await Posts.findAll({
-    include: [ Users ],
-    where
-  })
+    let where = {}
+    if (query.userId) { where.userId = query.userId }
 
-  return posts
+    const posts = await Posts.findAll({
+        include: [Users, Comments],
+        where
+    })
+
+    return posts
 }
 
 module.exports = {
-  createNewPost,
-  findAllPosts
+    createNewPost,
+    findAllPosts
 }
 
 /* Test Code */
