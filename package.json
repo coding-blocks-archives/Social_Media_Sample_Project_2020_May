@@ -1,25 +1,37 @@
 {
-  "name": "social-media-project",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
-  "scripts": {
-    "start": "node src/server.js",
-    "test": "mocha test/setup.js test/**/*.test.js",
-    "cover": "nyc --reporter=lcov npm run test"
-  },
-  "author": "",
-  "license": "ISC",
-  "dependencies": {
-    "express": "^4.17.1",
-    "mysql2": "^2.1.0",
-    "sequelize": "^5.21.7",
-    "sqlite3": "^4.2.0"
-  },
-  "devDependencies": {
-    "chai": "^4.2.0",
-    "chai-as-promised": "^7.1.1",
-    "mocha": "^7.2.0",
-    "nyc": "^15.0.1"
-  }
+    "name": "social-media-project",
+    "version": "1.0.0",
+    "description": "",
+    "main": "server.js",
+    "scripts": {
+        "start": "node src/server.js",
+        "test": "mocha test/setup.js test/**/*.test.js",
+        "cover": "nyc --reporter=lcov npm run test"
+    },
+    "author": "",
+    "license": "ISC",
+    "dependencies": {
+        "express": "^4.17.1",
+        "mysql2": "^2.1.0",
+        "sequelize": "^5.21.10",
+        "sqlite3": "^4.2.0"
+    },
+    "devDependencies": {
+        "chai": "^4.2.0",
+        "chai-as-promised": "^7.1.1",
+        "mocha": "^7.2.0",
+        "nyc": "^15.0.1"
+    },
+    "directories": {
+        "test": "test"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/creatorpiyush/Social_Media_Sample_Project_2020_May.git"
+    },
+    "keywords": [],
+    "bugs": {
+        "url": "https://github.com/creatorpiyush/Social_Media_Sample_Project_2020_May/issues"
+    },
+    "homepage": "https://github.com/creatorpiyush/Social_Media_Sample_Project_2020_May#readme"
 }
