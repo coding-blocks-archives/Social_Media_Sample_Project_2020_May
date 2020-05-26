@@ -15,6 +15,7 @@ async function createNewPost(userId, title, body) {
  * showAllPosts({title: ''})
  */
 async function findAllPosts(query) {
+  // console.log("from controller post pooooooooooooo-:",query)
   let where = {}
   if (query.userId) { where.userId = query.userId }
   
@@ -48,7 +49,7 @@ async function task() {
   //     'Some body example here as well'
   //   )
   // )
-  const posts = await showAllPosts()
+  const posts = await findAllPosts(1)
   for (let p of posts) {
     console.log(`${p.title}\nauthor: ${p.user.username}\n${p.body}\n==========\n`)
   }

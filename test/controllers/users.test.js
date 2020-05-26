@@ -7,9 +7,7 @@ const {
 
 describe('controllers/users', () => {
   let createdUser = null
-
   it('should create anonymous user', async () => {
-
     createdUser = await createAnonUser()
     expect(createdUser).to.have.property('username')
     expect(createdUser.id).to.be.a('number')
