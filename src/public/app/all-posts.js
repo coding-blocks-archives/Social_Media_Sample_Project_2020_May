@@ -1,11 +1,11 @@
 function loadPosts() {
   $.get("/api/posts", (posts) => {
-    //got posts from api
+
 
     console.log(posts);
 
     for (let p of posts) {
-      //looping through each post
+    
 
       let item = $(`
                     <div class="col-4">
