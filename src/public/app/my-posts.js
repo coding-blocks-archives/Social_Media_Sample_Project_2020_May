@@ -42,6 +42,6 @@ function loadMyPosts() {
       });
       $("#posts-container").append(item);
    
-    } //loop ends
+    } 
   });
 }
