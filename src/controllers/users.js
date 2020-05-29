@@ -2,9 +2,9 @@ const { Users } = require('../db/models')
 const { genRandomUsername } = require('../utils/username')
 
 async function createAnonUser() {
-  const user = await Users.create({
+  return await Users.create({
     username: genRandomUsername(),
-  })
+  });
 
   return user
 }

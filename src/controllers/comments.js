@@ -1,7 +1,6 @@
 const { Posts, Users, Comments } = require("../db/models");
 
 async function createComment(user_id, post_id, comment_body) {
-  try {
     let user = await Users.findOne({
       where: {
         id: user_id,
@@ -13,11 +12,7 @@ async function createComment(user_id, post_id, comment_body) {
       userId: user_id,
       postId: post_id,
     });
-  } catch (err) {
-    console.log(err);
-    return null;
   }
-}
 module.exports = {
   createComment
 };
