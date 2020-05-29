@@ -4,7 +4,7 @@ $("#write-btn").click(() => {
   const body = $("#p-body").val()
 
   $.post("/api/posts", { userId, title, body }, async (data) => {
-    console.log(data)
+    // console.log(data)
     await $("#content").load("/components/my-posts.html")
     await $(".nav-item .active").removeClass("active")
     await $("[data-components='my-posts']").addClass("active")

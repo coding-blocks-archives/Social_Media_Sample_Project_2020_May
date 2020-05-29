@@ -12,7 +12,7 @@ function loadPosts() {
                 ${p.body.substr(0, 200)}
                 <a href="#">...read more</a>
               </p>
-              <a href="#" class="card-link">Comment</a>
+              <a href="http://localhost:8483/api/posts/comments/${p.id}/endpoint" class="card-link">Comment</a>
               <a href="#" class="card-link">Like</a>
             </div>
           </div>
