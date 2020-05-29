@@ -1,8 +1,7 @@
 function loadPosts() {
-  $.get('/api/posts', (posts) => {
+  $.get("/api/posts", (posts) => {
     for (let p of posts) {
-      $('#posts-container').append(
-        $(`
+      let item = $(`
         <div class="col-4">
           <div class="card m-2">
             <div class="card-body">
@@ -12,14 +11,34 @@ function loadPosts() {
                 ${p.body.substr(0, 200)}
                 <a href="#">...read more</a>
               </p>
-              <a href="#" class="card-link">Comment</a>
-              <a href="#" class="card-link">Like</a>
+              <input type = "text" placeholder="Write your comment" class="newComment">
+              <button class= "card-link btnComment">Comment</button>
+              <ul class="comment></ul>
             </div>
           </div>
-        </div>
-        
-        `)
-      )
+        </div>  
+      `);
+
+      let commentBox= item.find(".comment")
+      for(let comment of p.comment) {
+        commentBox.append(
+          ${"<li></li>"}.text(`[${comment.title}]:${comment.body}`)
+        );
+      }
+
+      item.find(".btnComment").on("click",()=>{
+        $.post(
+          "/api/commments",
+          {
+            post_id:p.id,
+            comment_body: item.find(".newComment").val(),
+          },
+          (comment)=>{
+            $("#content").load('/components/all-posts.html');
+          }
+        );
+      });
+      $("#posts-container").append(item);
     }
-  })
+  });
 }
