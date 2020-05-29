@@ -14,8 +14,8 @@ app.use('/', express.static(__dirname + '/public'))
 
 db.sync()
   .then(() => {
-    app.listen(8383, () => {
-      console.log('server started on http://localhost:8383')
+    app.listen(8384, () => {
+      console.log('server started on http://localhost:8384')
     })
   })
   .catch((err) => {
