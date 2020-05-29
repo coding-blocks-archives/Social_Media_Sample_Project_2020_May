@@ -8,10 +8,10 @@ if (process.env.NODE_ENV == 'testing') {
   })
 } else {
   db = new Sequelize({
-    dialect: 'mysql',
-    database: 'cbsocialmediadb',
-    username: 'cbsocialuser',
-    password: 'cbsocialpass'
+    dialect:'mysql',
+    database: 'cbSocialMediaDb',
+    username: 'cbSocialMediaUser',
+    password: 'Social_1'
   })
 }
 
