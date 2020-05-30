@@ -1,6 +1,6 @@
 function loadMyPosts() {
   const userId = JSON.parse(window.localStorage.user).id
-
+  console.log(userId)
   $.get(`/api/posts?userId=${userId}`, (posts) => {
     for (let p of posts) {
       $('#posts-container').append(
@@ -19,7 +19,7 @@ function loadMyPosts() {
             </div>
           </div>
         </div>
-        
+
         `)
       )
     }

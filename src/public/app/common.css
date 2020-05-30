@@ -10,6 +10,30 @@
   bottom: 0px;
   background-color: var(--light);
 }
-
+/* #inlineFormInputName2{
+  width: 100%;
+} */
+.btn-sm{
+  font-size: 0.75rem;
+}
+#comment{
+  font-size: 0.8rem;
+  height: 1.60rem;
+  width: 70%;
+}
+#comment-card{
+  font-size: 0.75rem;
+  padding: 0;
+}
+#comment-card .card-body{
+  padding:0.3rem;
+}
+#comment-card .card-body h6{
+  padding-top: 0.3rem;
+ font-size: 0.75rem;
+}
+#card{
+  padding-bottom: 0;
+}
 #content {
 }
