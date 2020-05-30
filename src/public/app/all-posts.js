@@ -16,7 +16,7 @@ function loadPosts() {
               </p> 
               
               <div class="form-inline" id ="collapseExample">
-                <input id="comment" type="text" class="form-control mb-2 mr-sm-2"  placeholder="${user.username}">
+                <input id="comment-${p.id}" type="text" class="form-control mb-2 mr-sm-2"  placeholder="${user.username}">
                 <button type="submit" id= "${p.id}" class=" btn-primary mb-2 btn-sm">comment</button>
                 <button type="submit" id= "${display}-${p.id}" class="btn-primary mb-2 btn-sm">show</button>
               </div>
@@ -32,7 +32,7 @@ function loadPosts() {
         const postId = p.id
         const userId = user.id
         const title = user.username
-        const body = $('#comment').val()
+        const body = $(`#comment-${p.id}`).val()
 
         $.post('/api/comments', {postId, userId, title, body}, (data)=>{
           console.log('ok sent', data.postId)
@@ -41,6 +41,7 @@ function loadPosts() {
       /*handle get req*/
         function comments(){
           $.get(`/api/comments?postId=${p.id}`, (comments)=>{
+            $(`#commentListId-${p.id}`).empty()
             for(let c of comments){
               $(`#commentListId-${p.id}`).append(
                 $(`

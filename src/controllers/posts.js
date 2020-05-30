@@ -14,8 +14,8 @@ async function createNewPost(userId, title, body) {
  * showAllPosts({username: ''})
  * showAllPosts({title: ''})
  */
-async function findAllPosts(query) {
-  // console.log("from controller post pooooooooooooo-:",query)
+async function findAllPosts(query) {  
+  // console.log("from controller post pooooooooooooo-:",typeof query)
   let where = {}
   if (query.userId) { where.userId = query.userId }
   

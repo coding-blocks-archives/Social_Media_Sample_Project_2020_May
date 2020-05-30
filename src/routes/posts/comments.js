@@ -4,7 +4,7 @@ const {findAllComments, createComment} = require('../../controllers/comments')
 const commentsRoute = Router()
 //post req router
 commentsRoute.post('/', async (req,res)=>{
-  console.log(`POST /api/comments`, req.body)
+  // console.log(`POST /api/comments`, req.body)
   const {postId, userId, title, body} = req.body
   if(!postId || !userId ||!title ||!body){
     return res.status(400).send({
