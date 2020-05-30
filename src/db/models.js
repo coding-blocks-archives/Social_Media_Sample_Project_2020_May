@@ -4,7 +4,7 @@ let db
 if (process.env.NODE_ENV == 'testing') {
   db = new Sequelize({
     dialect: 'sqlite',
-    storage: __dirname + "/testing.db",
+    storage: ':memory:',
   })
 } else {
   db = new Sequelize({
