@@ -5,15 +5,16 @@
   "main": "index.js",
   "scripts": {
     "start": "node src/server.js",
-    "test": "mocha test/setup.js test/**/*.test.js",
+    "test": "NODE_ENV=testing mocha test/setup.js test/**/*.test.js",
     "cover": "nyc --reporter=lcov npm run test"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
     "express": "^4.17.1",
+    "mysql": "^2.18.1",
     "mysql2": "^2.1.0",
-    "sequelize": "^5.21.7",
+    "sequelize": "^5.21.11",
     "sqlite3": "^4.2.0"
   },
   "devDependencies": {

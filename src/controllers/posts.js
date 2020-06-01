@@ -26,9 +26,19 @@ async function findAllPosts(query) {
   return posts
 }
 
+async function showpostbypostid(id)
+{
+    const p=await Posts.findOne({
+        where:{id},
+        include:[Users]
+      });
+        return p;
+}
+
 module.exports = {
   createNewPost,
-  findAllPosts
+  findAllPosts,
+  showpostbypostid
 }
 
 /* Test Code */
@@ -53,6 +63,5 @@ async function task() {
     console.log(`${p.title}\nauthor: ${p.user.username}\n${p.body}\n==========\n`)
   }
 }
-
 task()
 */

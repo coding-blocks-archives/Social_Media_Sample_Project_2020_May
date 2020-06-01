@@ -1,10 +1,25 @@
 const { Router } = require('express')
 const {
   findAllPosts,
-  createNewPost
+  createNewPost,
+  showpostbypostid
 } = require('../../controllers/posts')
 
 const route = Router()
+
+route.get("/:id",async(req,res)=>{
+  let post;
+  if(isNaN(parseInt(req.params.id)))
+  {
+      post=await showpostsbykeyword(req.params.id);
+  }
+  else
+  {
+      post=await showpostbypostid(req.params.id);
+  }
+ 
+  res.send(post);
+})
 
 route.get('/', async (req, res) => {
   const posts = await findAllPosts(req.query)

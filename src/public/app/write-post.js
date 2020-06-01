@@ -1,5 +1,6 @@
 $('#write-btn').click(() => {
   const userId = JSON.parse(window.localStorage.user).id
+  console.log(userId + "asdasdas")
   const title = $('#p-title').val()
   const body = $('#p-body').val()
 
