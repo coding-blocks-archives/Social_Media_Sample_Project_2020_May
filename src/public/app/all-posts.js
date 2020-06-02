@@ -29,7 +29,16 @@ function loadPosts() {
       let commentBox = item.find(".comment");
       for (let comment of p.comments) {
         commentBox.append(
-          $("<p></p>").text(`${comment.title} => ${comment.body}`)
+         `<div class="dropdown">
+  <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    Show
+  </button>
+  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+  
+  <a class="dropdown-item" href="#">${comment.title} => ${comment.body})</a>
+  </div>
+</div>`
+        
         );
       }
 
