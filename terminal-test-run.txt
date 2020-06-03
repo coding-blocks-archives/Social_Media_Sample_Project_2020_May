@@ -1,0 +1,188 @@
+singla@singla-Inspiron-3542:/media/singla/New Volume/Github Projects/Social_Media_Sample_Project_2020_May$ npm run test
+
+> social-media-project@1.0.0 test /media/singla/New Volume/Github Projects/Social_Media_Sample_Project_2020_May
+> mocha test/setup.js test/**/*.test.js
+
+
+
+Executing (default): CREATE TABLE IF NOT EXISTS `users` (`id` INTEGER PRIMARY KEY AUTOINCREMENT, `username` VARCHAR(30) NOT NULL UNIQUE, `createdAt` DATETIME NOT NULL, `updatedAt` DATETIME NOT NULL);
+Executing (default): PRAGMA INDEX_LIST(`users`)
+Executing (default): PRAGMA INDEX_INFO(`sqlite_autoindex_users_1`)
+Executing (default): CREATE TABLE IF NOT EXISTS `posts` (`id` INTEGER PRIMARY KEY AUTOINCREMENT, `title` VARCHAR(140) NOT NULL, `body` TEXT NOT NULL, `createdAt` DATETIME NOT NULL, `updatedAt` DATETIME NOT NULL, `userId` INTEGER REFERENCES `users` (`id`) ON DELETE SET NULL ON UPDATE CASCADE);
+Executing (default): PRAGMA INDEX_LIST(`posts`)
+(sequelize) Warning: SQLite does not support TEXT with options. Plain `TEXT` will be used instead. 
+>> Check: https://www.sqlite.org/datatype3.html
+Executing (default): CREATE TABLE IF NOT EXISTS `comments` (`id` INTEGER PRIMARY KEY AUTOINCREMENT, `title` VARCHAR(140) NOT NULL, `body` TEXT, `createdAt` DATETIME NOT NULL, `updatedAt` DATETIME NOT NULL, `userId` INTEGER REFERENCES `users` (`id`) ON DELETE SET NULL ON UPDATE CASCADE, `postId` INTEGER REFERENCES `posts` (`id`) ON DELETE SET NULL ON UPDATE CASCADE);
+Executing (default): PRAGMA INDEX_LIST(`comments`)
+  controllers/comments
+Executing (default): INSERT INTO `comments` (`id`,`title`,`body`,`createdAt`,`updatedAt`,`postId`) VALUES (NULL,$1,$2,$3,$4,$5);
+    ✓ should create comment with postId, title and body assigned (221ms)
+Executing (default): SELECT `post`.`id`, `post`.`title`, `post`.`body`, `post`.`createdAt`, `post`.`updatedAt`, `post`.`userId`, `comments`.`id` AS `comments.id`, `comments`.`title` AS `comments.title`, `comments`.`body` AS `comments.body`, `comments`.`createdAt` AS `comments.createdAt`, `comments`.`updatedAt` AS `comments.updatedAt`, `comments`.`userId` AS `comments.userId`, `comments`.`postId` AS `comments.postId` FROM `posts` AS `post` LEFT OUTER JOIN `comments` AS `comments` ON `post`.`id` = `comments`.`postId` WHERE `post`.`id` = 1;
+    ✓ should find all commments by postId
+
+  controllers/posts
+Executing (default): INSERT INTO `posts` (`id`,`title`,`body`,`createdAt`,`updatedAt`,`userId`) VALUES (NULL,$1,$2,$3,$4,$5);
+    ✓ should create post with userId, title and body assigned (197ms)
+Executing (default): SELECT `post`.`id`, `post`.`title`, `post`.`body`, `post`.`createdAt`, `post`.`updatedAt`, `post`.`userId`, `user`.`id` AS `user.id`, `user`.`username` AS `user.username`, `user`.`createdAt` AS `user.createdAt`, `user`.`updatedAt` AS `user.updatedAt` FROM `posts` AS `post` LEFT OUTER JOIN `users` AS `user` ON `post`.`userId` = `user`.`id`;
+    ✓ should find all posts
+Executing (default): SELECT `post`.`id`, `post`.`title`, `post`.`body`, `post`.`createdAt`, `post`.`updatedAt`, `post`.`userId`, `user`.`id` AS `user.id`, `user`.`username` AS `user.username`, `user`.`createdAt` AS `user.createdAt`, `user`.`updatedAt` AS `user.updatedAt` FROM `posts` AS `post` LEFT OUTER JOIN `users` AS `user` ON `post`.`userId` = `user`.`id`;
+    ✓ should find all posts of a user by its userid
+
+  controllers/users
+Executing (default): INSERT INTO `users` (`id`,`username`,`createdAt`,`updatedAt`) VALUES (NULL,$1,$2,$3);
+    1) should create anonymous user
+    2) should find user by userid
+    ✓ should through error for non number userid
+    3) should find user by username
+
+
+  6 passing (572ms)
+  3 failing
+
+  1) controllers/users
+       should create anonymous user:
+     SequelizeUniqueConstraintError: Validation error
+      at Query.formatError (node_modules/sequelize/lib/dialects/sqlite/query.js:416:16)
+      at Query._handleQueryResponse (node_modules/sequelize/lib/dialects/sqlite/query.js:73:18)
+      at Statement.afterExecute (node_modules/sequelize/lib/dialects/sqlite/query.js:250:31)
+      at Statement.replacement (node_modules/sqlite3/lib/trace.js:19:31)
+
+  2) controllers/users
+       should find user by userid:
+     TypeError: Cannot read property 'id' of null
+      at Context.it (test/controllers/users.test.js:21:51)
+
+  3) controllers/users
+       should find user by username:
+     TypeError: Cannot read property 'username' of null
+      at Context.it (test/controllers/users.test.js:37:57)
+
+
+
+npm ERR! code ELIFECYCLE
+npm ERR! errno 3
+npm ERR! social-media-project@1.0.0 test: `mocha test/setup.js test/**/*.test.js`
+npm ERR! Exit status 3
+npm ERR! 
+npm ERR! Failed at the social-media-project@1.0.0 test script.
+npm ERR! This is probably not a problem with npm. There is likely additional logging output above.
+
+npm ERR! A complete log of this run can be found in:
+npm ERR!     /home/singla/.npm/_logs/2020-05-30T06_48_24_509Z-debug.log
+
+
+singla@singla-Inspiron-3542:/media/singla/New Volume/Github Projects/Social_Media_Sample_Project_2020_May$ npm run test
+
+> social-media-project@1.0.0 test /media/singla/New Volume/Github Projects/Social_Media_Sample_Project_2020_May
+> mocha test/setup.js test/**/*.test.js
+
+
+
+Executing (default): CREATE TABLE IF NOT EXISTS `users` (`id` INTEGER PRIMARY KEY AUTOINCREMENT, `username` VARCHAR(30) NOT NULL UNIQUE, `createdAt` DATETIME NOT NULL, `updatedAt` DATETIME NOT NULL);
+Executing (default): PRAGMA INDEX_LIST(`users`)
+Executing (default): PRAGMA INDEX_INFO(`sqlite_autoindex_users_1`)
+Executing (default): CREATE TABLE IF NOT EXISTS `posts` (`id` INTEGER PRIMARY KEY AUTOINCREMENT, `title` VARCHAR(140) NOT NULL, `body` TEXT NOT NULL, `createdAt` DATETIME NOT NULL, `updatedAt` DATETIME NOT NULL, `userId` INTEGER REFERENCES `users` (`id`) ON DELETE SET NULL ON UPDATE CASCADE);
+Executing (default): PRAGMA INDEX_LIST(`posts`)
+(sequelize) Warning: SQLite does not support TEXT with options. Plain `TEXT` will be used instead. 
+>> Check: https://www.sqlite.org/datatype3.html
+Executing (default): CREATE TABLE IF NOT EXISTS `comments` (`id` INTEGER PRIMARY KEY AUTOINCREMENT, `title` VARCHAR(140) NOT NULL, `body` TEXT, `createdAt` DATETIME NOT NULL, `updatedAt` DATETIME NOT NULL, `userId` INTEGER REFERENCES `users` (`id`) ON DELETE SET NULL ON UPDATE CASCADE, `postId` INTEGER REFERENCES `posts` (`id`) ON DELETE SET NULL ON UPDATE CASCADE);
+Executing (default): PRAGMA INDEX_LIST(`comments`)
+  controllers/comments
+Executing (default): INSERT INTO `comments` (`id`,`title`,`body`,`createdAt`,`updatedAt`,`postId`) VALUES (NULL,$1,$2,$3,$4,$5);
+    ✓ should create comment with postId, title and body assigned (259ms)
+Executing (default): SELECT `post`.`id`, `post`.`title`, `post`.`body`, `post`.`createdAt`, `post`.`updatedAt`, `post`.`userId`, `comments`.`id` AS `comments.id`, `comments`.`title` AS `comments.title`, `comments`.`body` AS `comments.body`, `comments`.`createdAt` AS `comments.createdAt`, `comments`.`updatedAt` AS `comments.updatedAt`, `comments`.`userId` AS `comments.userId`, `comments`.`postId` AS `comments.postId` FROM `posts` AS `post` LEFT OUTER JOIN `comments` AS `comments` ON `post`.`id` = `comments`.`postId` WHERE `post`.`id` = 1;
+    ✓ should find all commments by postId
+
+  controllers/posts
+Executing (default): INSERT INTO `posts` (`id`,`title`,`body`,`createdAt`,`updatedAt`,`userId`) VALUES (NULL,$1,$2,$3,$4,$5);
+    ✓ should create post with userId, title and body assigned (185ms)
+Executing (default): SELECT `post`.`id`, `post`.`title`, `post`.`body`, `post`.`createdAt`, `post`.`updatedAt`, `post`.`userId`, `user`.`id` AS `user.id`, `user`.`username` AS `user.username`, `user`.`createdAt` AS `user.createdAt`, `user`.`updatedAt` AS `user.updatedAt` FROM `posts` AS `post` LEFT OUTER JOIN `users` AS `user` ON `post`.`userId` = `user`.`id`;
+    ✓ should find all posts
+Executing (default): SELECT `post`.`id`, `post`.`title`, `post`.`body`, `post`.`createdAt`, `post`.`updatedAt`, `post`.`userId`, `user`.`id` AS `user.id`, `user`.`username` AS `user.username`, `user`.`createdAt` AS `user.createdAt`, `user`.`updatedAt` AS `user.updatedAt` FROM `posts` AS `post` LEFT OUTER JOIN `users` AS `user` ON `post`.`userId` = `user`.`id`;
+    ✓ should find all posts of a user by its userid
+
+  controllers/users
+Executing (default): INSERT INTO `users` (`id`,`username`,`createdAt`,`updatedAt`) VALUES (NULL,$1,$2,$3);
+    1) should create anonymous user
+    2) should find user by userid
+    ✓ should through error for non number userid
+    3) should find user by username
+
+
+  6 passing (607ms)
+  3 failing
+
+  1) controllers/users
+       should create anonymous user:
+     SequelizeUniqueConstraintError: Validation error
+      at Query.formatError (node_modules/sequelize/lib/dialects/sqlite/query.js:416:16)
+      at Query._handleQueryResponse (node_modules/sequelize/lib/dialects/sqlite/query.js:73:18)
+      at Statement.afterExecute (node_modules/sequelize/lib/dialects/sqlite/query.js:250:31)
+      at Statement.replacement (node_modules/sqlite3/lib/trace.js:19:31)
+
+  2) controllers/users
+       should find user by userid:
+     TypeError: Cannot read property 'id' of null
+      at Context.it (test/controllers/users.test.js:21:51)
+
+  3) controllers/users
+       should find user by username:
+     TypeError: Cannot read property 'username' of null
+      at Context.it (test/controllers/users.test.js:37:57)
+
+
+
+npm ERR! code ELIFECYCLE
+npm ERR! errno 3
+npm ERR! social-media-project@1.0.0 test: `mocha test/setup.js test/**/*.test.js`
+npm ERR! Exit status 3
+npm ERR! 
+npm ERR! Failed at the social-media-project@1.0.0 test script.
+npm ERR! This is probably not a problem with npm. There is likely additional logging output above.
+
+npm ERR! A complete log of this run can be found in:
+npm ERR!     /home/singla/.npm/_logs/2020-05-30T06_48_36_130Z-debug.log
+
+
+
+singla@singla-Inspiron-3542:/media/singla/New Volume/Github Projects/Social_Media_Sample_Project_2020_May$ npm run test
+
+> social-media-project@1.0.0 test /media/singla/New Volume/Github Projects/Social_Media_Sample_Project_2020_May
+> mocha test/setup.js test/**/*.test.js
+
+
+
+Executing (default): CREATE TABLE IF NOT EXISTS `users` (`id` INTEGER PRIMARY KEY AUTOINCREMENT, `username` VARCHAR(30) NOT NULL UNIQUE, `createdAt` DATETIME NOT NULL, `updatedAt` DATETIME NOT NULL);
+Executing (default): PRAGMA INDEX_LIST(`users`)
+Executing (default): PRAGMA INDEX_INFO(`sqlite_autoindex_users_1`)
+Executing (default): CREATE TABLE IF NOT EXISTS `posts` (`id` INTEGER PRIMARY KEY AUTOINCREMENT, `title` VARCHAR(140) NOT NULL, `body` TEXT NOT NULL, `createdAt` DATETIME NOT NULL, `updatedAt` DATETIME NOT NULL, `userId` INTEGER REFERENCES `users` (`id`) ON DELETE SET NULL ON UPDATE CASCADE);
+Executing (default): PRAGMA INDEX_LIST(`posts`)
+(sequelize) Warning: SQLite does not support TEXT with options. Plain `TEXT` will be used instead. 
+>> Check: https://www.sqlite.org/datatype3.html
+Executing (default): CREATE TABLE IF NOT EXISTS `comments` (`id` INTEGER PRIMARY KEY AUTOINCREMENT, `title` VARCHAR(140) NOT NULL, `body` TEXT, `createdAt` DATETIME NOT NULL, `updatedAt` DATETIME NOT NULL, `userId` INTEGER REFERENCES `users` (`id`) ON DELETE SET NULL ON UPDATE CASCADE, `postId` INTEGER REFERENCES `posts` (`id`) ON DELETE SET NULL ON UPDATE CASCADE);
+Executing (default): PRAGMA INDEX_LIST(`comments`)
+  controllers/comments
+Executing (default): INSERT INTO `comments` (`id`,`title`,`body`,`createdAt`,`updatedAt`,`postId`) VALUES (NULL,$1,$2,$3,$4,$5);
+    ✓ should create comment with postId, title and body assigned (233ms)
+Executing (default): SELECT `post`.`id`, `post`.`title`, `post`.`body`, `post`.`createdAt`, `post`.`updatedAt`, `post`.`userId`, `comments`.`id` AS `comments.id`, `comments`.`title` AS `comments.title`, `comments`.`body` AS `comments.body`, `comments`.`createdAt` AS `comments.createdAt`, `comments`.`updatedAt` AS `comments.updatedAt`, `comments`.`userId` AS `comments.userId`, `comments`.`postId` AS `comments.postId` FROM `posts` AS `post` LEFT OUTER JOIN `comments` AS `comments` ON `post`.`id` = `comments`.`postId` WHERE `post`.`id` = 1;
+    ✓ should find all commments by postId
+
+  controllers/posts
+Executing (default): INSERT INTO `posts` (`id`,`title`,`body`,`createdAt`,`updatedAt`,`userId`) VALUES (NULL,$1,$2,$3,$4,$5);
+    ✓ should create post with userId, title and body assigned (180ms)
+Executing (default): SELECT `post`.`id`, `post`.`title`, `post`.`body`, `post`.`createdAt`, `post`.`updatedAt`, `post`.`userId`, `user`.`id` AS `user.id`, `user`.`username` AS `user.username`, `user`.`createdAt` AS `user.createdAt`, `user`.`updatedAt` AS `user.updatedAt` FROM `posts` AS `post` LEFT OUTER JOIN `users` AS `user` ON `post`.`userId` = `user`.`id`;
+    ✓ should find all posts
+Executing (default): SELECT `post`.`id`, `post`.`title`, `post`.`body`, `post`.`createdAt`, `post`.`updatedAt`, `post`.`userId`, `user`.`id` AS `user.id`, `user`.`username` AS `user.username`, `user`.`createdAt` AS `user.createdAt`, `user`.`updatedAt` AS `user.updatedAt` FROM `posts` AS `post` LEFT OUTER JOIN `users` AS `user` ON `post`.`userId` = `user`.`id`;
+    ✓ should find all posts of a user by its userid
+
+  controllers/users
+Executing (default): INSERT INTO `users` (`id`,`username`,`createdAt`,`updatedAt`) VALUES (NULL,$1,$2,$3);
+    ✓ should create anonymous user (174ms)
+Executing (default): SELECT `id`, `username`, `createdAt`, `updatedAt` FROM `users` AS `user` WHERE `user`.`id` = 43;
+    ✓ should find user by userid
+    ✓ should through error for non number userid
+Executing (default): SELECT `id`, `username`, `createdAt`, `updatedAt` FROM `users` AS `user` WHERE `user`.`username` = 'slim-chalk';
+    ✓ should find user by username
+
+
+  9 passing (748ms)

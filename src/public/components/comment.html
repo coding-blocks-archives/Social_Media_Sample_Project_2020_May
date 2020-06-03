@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/app/common.css">
+    <script defer src="/app/common.js"></script>
+    
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <a class="navbar-brand" href="http://localhost:8483">MockSocial</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav">
+          <li class="nav-item active">
+            <a class="nav-link" href="http://localhost:8483" data-component="all-posts">
+              Home
+            </a>
+        </ul>
+      </div>
+    </nav>
+
+
+
+
+    <div class="container my-2">
+        <h1 class="h1 text-center">Post With Comments</h1>
+      
+        <div class="row" id="comment-container">
+        </div>
+      </div>
+      <script src="http://code.jquery.com/jquery-3.4.1.js"></script>
+      <link rel="stylesheet" href="/css/bootstrap.css">
+  <script src="/js/popper.js"></script>
+  <!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.js" ></script> -->
+  <script src="/js/bootstrap.js"></script>
+  <script src="/app/comment.js"></script>
+      <!-- /media/singla/New Volume/Github Projects/Mock-Message-Site/Social-Media-Project/src/public -->
+      <script>
+      loadPostsComments()
+      </script>
+      </head>
+      <body>
+        <div id="posts-container"  style="text-align: -webkit-center;">
+        </div>
+        <div class="container my-2">
+          <h1 class="h1 text-center">Write Comments</h1>
+        
+          <!-- Write Post form -->
+          <form action="/api/posts/comments" method="POST">
+            <div class="form-group">
+              <label>Post Id</label>
+              <input type="text" class="form-control" name="postId">
+            </div>
+            <div class="form-group">
+              <label>Title</label>
+              <input type="text" class="form-control" name="title">
+            </div>
+            <div class="form-group">
+              <label>Body</label>
+              <input type="text" class="form-control" name="body">
+            </div>
+            <div class="form-group form-check">
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+          </form>
+        </div>
+        <div id="footer"></div>
+   
+</body>
+</html>
